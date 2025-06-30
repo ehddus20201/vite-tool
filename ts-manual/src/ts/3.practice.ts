@@ -14,19 +14,20 @@ const person:{
 
 const product:{
   name:string;
-  price:number;
-  discount?:number;
-
+  price?:number
 } = {
   name: "Laptop",
   price: 1000
 };
-product.discount= 23;
+
 
 
 // 문제:students 프로퍼티를 정의하고 출력하세요
 
-const students:{name:string; score:number}[] = [
+const students:{
+  name:string;
+  score:number
+}[] = [
   { name: "Luke", score: 85 },
   { name: "Emma", score: 92 },
   { name: "Liam", score: 78 }
@@ -40,8 +41,10 @@ const students:{name:string; score:number}[] = [
 const user1:{
   name:string;
   age:number;
-  address:{long:number; lat:number}[]
-  
+  address:{
+    long:number;
+    lat:number
+  }[]
 } = {
   name:'tiger',
   age:30,

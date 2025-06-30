@@ -1,6 +1,6 @@
-import { getSyntheticTrailingComments } from "../../node_modules/typescript/lib/typescript";
 
-let arr:number[] = [1,2,3,]
+
+let arr:number[] = [1,2,3]
 
 
 

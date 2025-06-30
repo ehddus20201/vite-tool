@@ -13,7 +13,7 @@ num1 = 100;
 
 
 
-let str1 = 'hi kk';
+let str1:string = 'hi kk';
 let str2 = "hello";
 let str3 = `hola ${num2}`
 

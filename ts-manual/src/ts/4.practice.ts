@@ -6,7 +6,7 @@
 type Product = {
   name:string;
   price:number;
-  [key:string]:string|number
+  [key:string]:string|number;
 }
 
 const product:Product = {
@@ -25,16 +25,15 @@ console.log(product); // { name: 'Laptop', price: 1000, discount: 10, color: 'bl
 
 
 // 문제: employeeData에 Employee타입을 지정하고 동적으로 들어오는 정보를 추가하세요
-
 type User = {
   name:string;
   position:string;
   salary:number;
-  [key:string]:number|string
+  [key:string]:string|number;
 }
 
-type Employee = {
-  [key:string]:User
+type Employee ={
+  [key:string]:User;
 }
 
 const employeeData:Employee = {
@@ -43,7 +42,6 @@ const employeeData:Employee = {
     position: "Developer", 
     salary: 5000 
   }
-
 };
 
 // 동적으로 추가적인 정보 추가

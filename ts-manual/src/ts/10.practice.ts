@@ -9,7 +9,7 @@ link.href = ''
 
 // 타입 단언 제네릭을 사용해 에러를 해결해주세요.
 
-const image = document.querySelector<HTMLImageElement>('img')!;
+const image = document.querySelector('img')!;
 
 image.src = '/assets/visual.jpg'
 image.alt = '작품명 : 모나리자'
@@ -19,20 +19,23 @@ image.alt = '작품명 : 모나리자'
 
 // 타입 좁히기와 단언(as)를 사용해 에러를 해결해주세요.
 
-const checkbox = document.querySelector('input[type="checkbox"]');
+const checkbox = document.querySelector('input[type="checkbox"]')as HTMLInputElement;
 
 if(checkbox){
-  (checkbox as HTMLInputElement).checked = false;
-}
 
+  (checkbox as HTMLInputElement).checked = false;
+
+}
+checkbox.checked = false;
 
 
 // 상속여부(instanceof)를 사용해 에러를 해결해주세요.
 
 const agreement = document.querySelector('input[type="checkbox"]');
 
-if( agreement instanceof HTMLInputElement){
+if(agreement instanceof HTMLInputElement){
   agreement.checked = true;
+
 }
 
 
@@ -44,9 +47,9 @@ if( agreement instanceof HTMLInputElement){
 
 const user = {
   role: "admin"
-}as const;
+} as const;
 
 // 오류: 'role'은 string으로 간주됨
-if (user.role === "guest") {
+if (user.role === "gest") {
   console.log("관리자입니다.");
 }

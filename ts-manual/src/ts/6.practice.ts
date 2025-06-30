@@ -3,16 +3,20 @@
 
 let un:unknown;
 
-
-if(typeof un==='number'){
-  un.toFixed(2)
+if(typeof un ==='number'){
+  un.toFixed(3);
 }
-else if(typeof un === 'string'){
-  un.toUpperCase()
+if(typeof un ==='string'){
+  un.toUpperCase();
 }
-else if(un instanceof Date){
+if(un instanceof Date){
   un.getTime();
 }
-else if(un instanceof HTMLElement ){
-  un.nextElementSibling
+if(un instanceof HTMLElement){
+un.nextElementSibling;
+
 }
+
+
+
+

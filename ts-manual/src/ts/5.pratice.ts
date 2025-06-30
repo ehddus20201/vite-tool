@@ -4,8 +4,7 @@
 
 // 숫자형 Days  enum 정의
 // TS JS 변수 사용하기 
-
-enum Days{
+enum Days {
   Sunday,
   Monday,
   Tuesday,
@@ -13,8 +12,8 @@ enum Days{
   Thursday,
   friday,
   Saturday,
-
 }
+
 
 console.log(Days.Sunday);    // 1
 console.log(Days.Saturday);  // 7
@@ -36,12 +35,12 @@ Saturday
 
 
 // 문제: TrafficLight enum 정의후 switch case를 사용한 비교 
-enum TrafficLight{
-  Red = "Red",
-  Green = "Green",
-  Yellow = "Tellow",
-}
 
+enum TrafficLight{
+  Red,
+  Green,
+  Yellow,
+}
 /* 
 
 Red,
