@@ -19,6 +19,23 @@ function fn<T>(value:T):T{
 
 fn(10)
 fn('hello')
+fn([])
+fn({})
+
+
+/* 
+
+T => Type
+U => Util => Unique
+K => Key
+V => Value
+R => return type
+E => Element / Error
+S => State
+
+
+*/
+
 
 
 const arr:Array<number> = [1,2,3]
