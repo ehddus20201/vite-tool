@@ -32,7 +32,7 @@ export interface Company {
     bs:          string;
 }
 
-export interface Poke {
+export interface Pokemon {
     abilities:                Ability[];
     base_experience:          number;
     cries:                    Cries;
