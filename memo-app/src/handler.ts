@@ -1,6 +1,8 @@
+import gsap from "gsap";
 import { main } from "./main";
-import { deleteMemo } from "./service/service";
+import { deleteMemo, insertMemo } from "./service/service";
 import { supabase } from "./supabase/supabase";
+import type { Tables } from "./supabase/database.types";
 
 
 let draggingEl:HTMLElement | null = null;
@@ -81,4 +83,35 @@ export async function handleDelete(e:MouseEvent){
 
   }
   
+}
+
+
+
+export function handleOpenPop(){
+  const tl = gsap.timeline()
+  .to('#dialog',{autoAlpha:1, duration:0.2})
+  .to('.pop',{y:0,ease:'power3.inOut'})
+  
+}
+export function handleCreate(e:MouseEvent){
+  e.preventDefault();
+  const title = document.querySelector('#title') as HTMLInputElement;
+  const description = document.querySelector('#description') as HTMLInputElement;
+  const priority = document.querySelector('#priority') as HTMLSelectElement;
+  insertMemo({
+    title:title.value,
+    description:description.value,
+    priority:priority.value as Tables<'memo'>['priority'],
+  })
+  // title값
+  // description값
+  // priority 값
+  title.value = "";
+  description.value = "";
+  priority.value = "high";
+}
+export function handleClosePop(){
+  const tl = gsap.timeline()
+  .to('.pop',{y:'100%',ease:'power3.inOut'})
+  .to('#dialog',{autoAlpha:0, duration:0.2})
 }
