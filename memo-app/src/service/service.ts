@@ -9,6 +9,7 @@ export async function fetchMemo(){
   const {data, error} = await supabase.from('memo').select()
   
   // let a:Tables<'memo'>['priority']
+  main.innerHTML="";
 
   if(data){
   data.forEach((d)=>{
@@ -17,5 +18,16 @@ export async function fetchMemo(){
 }
 }
 
+export async function deleteMemo(id:number){
 
+    const response = await supabase
+      .from('memo')
+      .delete()
+      .eq('id',id)
+      .select()
+
+      fetchMemo()
+
+    console.log(response);
+}
 

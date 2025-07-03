@@ -1,4 +1,6 @@
 import { main } from "./main";
+import { deleteMemo } from "./service/service";
+import { supabase } from "./supabase/supabase";
 
 
 let draggingEl:HTMLElement | null = null;
@@ -55,4 +57,28 @@ export function handleDragEnd(){
     draggingEl = null;
   }
 
+}
+
+/* 
+1. supabase 사용해서 DLETE 통신을 하자
+2. 이번트 위임 처리 (삭제 버튼을 클릭하면 article의 data-id를 가져오기)
+3. supabase .eq(id:가져온ID)
+*/
+
+export async function handleDelete(e:MouseEvent){
+  
+  const target = e.target as HTMLElement;
+  const article = target.closest('article')
+  const btn = target.closest('button');
+  if(!(btn && article)) return
+  const id = article.dataset.id;
+  console.log(article);
+
+  
+  
+  if(confirm('정말 지울거야..?')){
+    deleteMemo(Number(id))
+
+  }
+  
 }

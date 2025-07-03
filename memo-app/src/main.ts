@@ -1,5 +1,5 @@
 
-import { handleDragEnd, handleDragOver, handleDragStart } from './handler';
+import { handleDelete, handleDragEnd, handleDragOver, handleDragStart } from './handler';
 import { fetchMemo } from './service/service';
 import '/src/style.css';
 
@@ -17,3 +17,4 @@ window.addEventListener('DOMContentLoaded',()=>{
 main.addEventListener('dragstart',handleDragStart);
 main.addEventListener('dragover',handleDragOver);
 main.addEventListener('dragend',handleDragEnd);
+main.addEventListener('click',handleDelete);
