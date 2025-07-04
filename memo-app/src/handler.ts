@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { main } from "./main";
-import { deleteMemo, insertMemo } from "./service/service";
+import { deleteMemo, insertMemo, sortMemo } from "./service/service";
 import { supabase } from "./supabase/supabase";
 import type { Tables } from "./supabase/database.types";
 
@@ -59,6 +59,8 @@ export function handleDragEnd(){
     draggingEl = null;
   }
 
+  sortMemo()
+
 }
 
 /* 
@@ -102,6 +104,7 @@ export function handleCreate(e:MouseEvent){
     title:title.value,
     description:description.value,
     priority:priority.value as Tables<'memo'>['priority'],
+    position: document.querySelectorAll('article').length
   })
   // title값
   // description값

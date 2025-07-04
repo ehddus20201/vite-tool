@@ -1,51 +1,72 @@
 import { renderMemo, type MemoData } from "../card";
-import gsap from "gsap";
-
-// import { data } from "../data";
 import { main } from "../main";
+import gsap from "gsap";
 import type { Tables } from "../supabase/database.types";
-// import type { Database, Tables } from "../supabase/database.types";
+// import type { Database, Tables } from "../supabase/database.types"
 import { supabase } from "../supabase/supabase";
 
-export async function fetchMemo(){
 
-  const {data, error} = await supabase.from('memo').select()
-  
+export async function fetchMemo() {
+  const { data, error } = await supabase
+  .from("memo")
+  .select()
+  .order('position',{ascending:true})
+
+  main.innerHTML = "";
+  // let a:Database['public']['Tables']['memo']['Row']
   // let a:Tables<'memo'>['priority']
-  main.innerHTML="";
 
-  if(data){
-  data.forEach((d)=>{
-    renderMemo(main,d);
-  })
-}
+  data &&
+    data.forEach((d) => {
+      renderMemo(main, d);
+    });
 }
 
-export async function deleteMemo(id:number){
+export async function deleteMemo(id: number) {
+  const response = await supabase.from("memo").delete().eq("id", id).select();
 
-    const response = await supabase
-      .from('memo')
-      .delete()
-      .eq('id',id)
-      .select()
-
-      fetchMemo()
-
-    console.log(response);
+  fetchMemo();
+  sortMemo();
 }
 
-export async function insertMemo({title,description,priority}:Pick<Tables<"memo">, 'title'| 'description'|'priority'>){
+export async function insertMemo({
+  title,
+  description,
+  priority,
+  position,
+}: Pick<Tables<"memo">,'title'|'description'|'priority'|'position'>) {
+
+
   const {error} = await supabase.from('memo').insert({
     title,
     description,
     priority,
-
-
+    position,
   })
 
-  fetchMemo();
 
-    const tl = gsap.timeline()
-  .to('.pop',{y:'100%',ease:'power3.inOut'})
-  .to('#dialog',{autoAlpha:0, duration:0.2})
+  fetchMemo()
+
+  const tl = gsap.timeline()
+  .to('.pop',{y:'100%', ease:'power3.inOut'})
+  .to('#dialog',{autoAlpha:0,duration:0.2})
+
+
+}
+
+
+export function sortMemo(){
+
+  const sortedItems = document.querySelectorAll('article');
+
+  sortedItems.forEach(async(item,index)=>{
+    const { error } = await supabase
+    .from('memo')
+    .update({position:index})
+    .eq('id',+item.dataset.id!)
+
+    console.log( error );
+    
+  })
+  
 }
